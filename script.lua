@@ -1,153 +1,120 @@
---[[ 
-    RUAN MODSZ | MENU COMPLETO COM KEY
-    Criado para Executor Mobile
-    By RUAN MODSZ
-]]
+-- RUAN MODSZ | FULL MENU (BASE PROFISSIONAL)
 
--- ===== SERVICES =====
 local Players = game:GetService("Players")
-local CoreGui = game:GetService("CoreGui")
 local Player = Players.LocalPlayer
+local CoreGui = game:GetService("CoreGui")
+local UIS = game:GetService("UserInputService")
 
 -- ===== CONFIG =====
 local KEY_CORRETA = "RUANMODSZVIP"
 
--- ===== GUI BASE =====
-local gui = Instance.new("ScreenGui")
+-- ===== GUI =====
+local gui = Instance.new("ScreenGui", CoreGui)
 gui.Name = "RUANMODSZ_GUI"
 gui.ResetOnSpawn = false
-gui.Parent = CoreGui
 
--- ===== TELA DE KEY =====
+-- ================= KEY SYSTEM =================
 local keyFrame = Instance.new("Frame", gui)
-keyFrame.Size = UDim2.new(0, 300, 0, 180)
-keyFrame.Position = UDim2.new(0.5, -150, 0.5, -90)
+keyFrame.Size = UDim2.new(0,300,0,170)
+keyFrame.Position = UDim2.new(0.5,-150,0.5,-85)
 keyFrame.BackgroundColor3 = Color3.fromRGB(25,25,25)
-keyFrame.BorderSizePixel = 0
-
-local keyCorner = Instance.new("UICorner", keyFrame)
-keyCorner.CornerRadius = UDim.new(0, 12)
+Instance.new("UICorner", keyFrame).CornerRadius = UDim.new(0,12)
 
 local keyTitle = Instance.new("TextLabel", keyFrame)
-keyTitle.Size = UDim2.new(1, 0, 0, 40)
-keyTitle.BackgroundTransparency = 1
+keyTitle.Size = UDim2.new(1,0,0,40)
 keyTitle.Text = "RUAN MODSZ - KEY"
+keyTitle.BackgroundTransparency = 1
 keyTitle.TextColor3 = Color3.new(1,1,1)
 keyTitle.Font = Enum.Font.GothamBold
-keyTitle.TextSize = 18
+keyTitle.TextSize = 16
 
 local keyBox = Instance.new("TextBox", keyFrame)
-keyBox.Size = UDim2.new(0.85, 0, 0, 35)
-keyBox.Position = UDim2.new(0.075, 0, 0.4, 0)
+keyBox.Size = UDim2.new(0.9,0,0,35)
+keyBox.Position = UDim2.new(0.05,0,0.4,0)
 keyBox.PlaceholderText = "Digite a key"
 keyBox.Text = ""
 keyBox.BackgroundColor3 = Color3.fromRGB(40,40,40)
 keyBox.TextColor3 = Color3.new(1,1,1)
-keyBox.Font = Enum.Font.Gotham
-keyBox.TextSize = 14
-
-Instance.new("UICorner", keyBox).CornerRadius = UDim.new(0, 8)
+Instance.new("UICorner", keyBox).CornerRadius = UDim.new(0,8)
 
 local keyBtn = Instance.new("TextButton", keyFrame)
-keyBtn.Size = UDim2.new(0.6, 0, 0, 35)
-keyBtn.Position = UDim2.new(0.2, 0, 0.7, 0)
-keyBtn.Text = "VERIFICAR"
+keyBtn.Size = UDim2.new(0.9,0,0,35)
+keyBtn.Position = UDim2.new(0.05,0,0.7,0)
+keyBtn.Text = "CONFIRMAR"
 keyBtn.BackgroundColor3 = Color3.fromRGB(0,170,0)
 keyBtn.TextColor3 = Color3.new(1,1,1)
-keyBtn.Font = Enum.Font.GothamBold
-keyBtn.TextSize = 14
+Instance.new("UICorner", keyBtn).CornerRadius = UDim.new(0,8)
 
-Instance.new("UICorner", keyBtn).CornerRadius = UDim.new(0, 8)
-
--- ===== MENU =====
-local menu = Instance.new("Frame", gui)
-menu.Size = UDim2.new(0, 260, 0, 220)
-menu.Position = UDim2.new(0.5, -130, 0.5, -110)
-menu.BackgroundColor3 = Color3.fromRGB(30,30,30)
-menu.Visible = false
-menu.BorderSizePixel = 0
-
-Instance.new("UICorner", menu).CornerRadius = UDim.new(0, 12)
-
-local menuTitle = Instance.new("TextLabel", menu)
-menuTitle.Size = UDim2.new(1, 0, 0, 40)
-menuTitle.BackgroundTransparency = 1
-menuTitle.Text = "RUAN MODSZ MENU"
-menuTitle.TextColor3 = Color3.new(1,1,1)
-menuTitle.Font = Enum.Font.GothamBold
-menuTitle.TextSize = 18
-
--- ===== BOTÕES DE FUNÇÃO (EXEMPLO) =====
-local function criarBotao(texto, posY)
-    local btn = Instance.new("TextButton", menu)
-    btn.Size = UDim2.new(0.85, 0, 0, 35)
-    btn.Position = UDim2.new(0.075, 0, posY, 0)
-    btn.Text = texto
-    btn.BackgroundColor3 = Color3.fromRGB(45,45,45)
-    btn.TextColor3 = Color3.new(1,1,1)
-    btn.Font = Enum.Font.Gotham
-    btn.TextSize = 14
-    Instance.new("UICorner", btn).CornerRadius = UDim.new(0, 8)
-    return btn
-end
-
-local btn1 = criarBotao("Função 1 (exemplo)", 0.25)
-local btn2 = criarBotao("Função 2 (exemplo)", 0.45)
-local btn3 = criarBotao("Fechar Menu", 0.65)
-
-btn1.MouseButton1Click:Connect(function()
-    print("Função 1 ativada")
-end)
-
-btn2.MouseButton1Click:Connect(function()
-    print("Função 2 ativada")
-end)
-
-btn3.MouseButton1Click:Connect(function()
-    menu.Visible = false
-end)
-
--- ===== BOTÃO FLUTUANTE =====
+-- ================= BOTÃO FLUTUANTE =================
 local openBtn = Instance.new("TextButton", gui)
-openBtn.Size = UDim2.new(0, 130, 0, 40)
-openBtn.Position = UDim2.new(0, 20, 0.5, 0)
+openBtn.Size = UDim2.new(0,120,0,40)
+openBtn.Position = UDim2.new(0,20,0.5,0)
 openBtn.Text = "RUAN MODSZ"
+openBtn.Visible = false
 openBtn.BackgroundColor3 = Color3.fromRGB(0,170,0)
 openBtn.TextColor3 = Color3.new(1,1,1)
-openBtn.Font = Enum.Font.GothamBold
-openBtn.TextSize = 14
-openBtn.Visible = false
+Instance.new("UICorner", openBtn).CornerRadius = UDim.new(0,10)
 
-Instance.new("UICorner", openBtn).CornerRadius = UDim.new(0, 10)
+-- ================= MENU =================
+local menu = Instance.new("Frame", gui)
+menu.Size = UDim2.new(0,380,0,320)
+menu.Position = UDim2.new(0.5,-190,0.5,-160)
+menu.BackgroundColor3 = Color3.fromRGB(30,30,30)
+menu.Visible = false
+Instance.new("UICorner", menu).CornerRadius = UDim.new(0,14)
 
+local title = Instance.new("TextLabel", menu)
+title.Size = UDim2.new(1,0,0,40)
+title.Text = "RUAN MODSZ"
+title.BackgroundTransparency = 1
+title.TextColor3 = Color3.new(1,1,1)
+title.Font = Enum.Font.GothamBold
+title.TextSize = 18
+
+-- ================= FUNÇÃO TOGGLE =================
+local function criarToggle(texto, posY, callback)
+	local btn = Instance.new("TextButton", menu)
+	btn.Size = UDim2.new(0.9,0,0,35)
+	btn.Position = UDim2.new(0.05,0,0,posY)
+	btn.Text = texto.." [OFF]"
+	btn.BackgroundColor3 = Color3.fromRGB(45,45,45)
+	btn.TextColor3 = Color3.new(1,1,1)
+	Instance.new("UICorner", btn).CornerRadius = UDim.new(0,8)
+
+	local ativo = false
+	btn.MouseButton1Click:Connect(function()
+		ativo = not ativo
+		btn.Text = texto.." ["..(ativo and "ON" or "OFF").."]"
+		callback(ativo)
+	end)
+end
+
+-- ================= MAIN =================
+criarToggle("Go to Celestial", 0.15, function(v) print("Celestial:",v) end)
+criarToggle("Go to Base", 0.27, function(v) print("Base:",v) end)
+criarToggle("God Mode (1-2 Wave)", 0.39, function(v) print("God:",v) end)
+criarToggle("Infinite Jump", 0.51, function(v) print("Jump:",v) end)
+criarToggle("Speed ++", 0.63, function(v) print("Speed:",v) end)
+criarToggle("Fly", 0.75, function(v) print("Fly:",v) end)
+
+-- ================= MORE =================
+criarToggle("Collect Money", 0.15, function(v) print("Money:",v) end)
+criarToggle("Auto Grab 1 Click", 0.27, function(v) print("Grab:",v) end)
+criarToggle("Auto Rebirth", 0.39, function(v) print("Rebirth:",v) end)
+criarToggle("Anti-AFK", 0.51, function(v) print("AFK:",v) end)
+criarToggle("Dupe Brainrot (VISIBLE)", 0.63, function(v) print("Dupe:",v) end)
+
+-- ================= CONTROLES =================
 openBtn.MouseButton1Click:Connect(function()
-    menu.Visible = not menu.Visible
+	menu.Visible = not menu.Visible
 end)
 
--- ===== VERIFICAÇÃO DA KEY =====
 keyBtn.MouseButton1Click:Connect(function()
-    if keyBox.Text == KEY_CORRETA then
-        keyFrame.Visible = false
-        openBtn.Visible = true
-
-        pcall(function()
-            game.StarterGui:SetCore("SendNotification", {
-                Title = "RUAN MODSZ",
-                Text = "Key correta! Menu liberado",
-                Duration = 5
-            })
-        end)
-    else
-        keyBox.Text = ""
-        keyBox.PlaceholderText = "Key incorreta!"
-    end
-end)
-
--- ===== NOTIFICAÇÃO =====
-pcall(function()
-    game.StarterGui:SetCore("SendNotification", {
-        Title = "RUAN MODSZ",
-        Text = "Script carregado com sucesso!",
-        Duration = 5
-    })
+	if keyBox.Text == KEY_CORRETA then
+		keyFrame:Destroy()
+		openBtn.Visible = true
+	else
+		keyBox.Text = ""
+		keyBox.PlaceholderText = "KEY INCORRETA!"
+	end
 end)
