@@ -1,120 +1,192 @@
--- RUAN MODSZ | FULL MENU (BASE PROFISSIONAL)
+--================================================
+-- RUAN MODSZ
+-- Brainrot Script Hub (BASE / VISUAL)
+-- KEY: RUANMODSZVIP
+--================================================
 
-local Players = game:GetService("Players")
-local Player = Players.LocalPlayer
-local CoreGui = game:GetService("CoreGui")
-local UIS = game:GetService("UserInputService")
+local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 
--- ===== CONFIG =====
-local KEY_CORRETA = "RUANMODSZVIP"
+-- CONFIG DA KEY
+local CORRECT_KEY = "RUANMODSZVIP"
 
--- ===== GUI =====
-local gui = Instance.new("ScreenGui", CoreGui)
-gui.Name = "RUANMODSZ_GUI"
-gui.ResetOnSpawn = false
+-- WINDOW COM KEY SYSTEM
+local Window = Rayfield:CreateWindow({
+    Name = "RUAN MODSZ",
+    LoadingTitle = "RUAN MODSZ",
+    LoadingSubtitle = "Brainrot Script",
+    ConfigurationSaving = { Enabled = false },
+    KeySystem = true,
+    KeySettings = {
+        Title = "RUAN MODSZ | Key System",
+        Subtitle = "Digite a key para acessar",
+        Note = "Key exclusiva",
+        FileName = "RUANMODSZ_KEY",
+        SaveKey = false,
+        GrabKeyFromSite = false,
+        Key = { CORRECT_KEY }
+    }
+})
 
--- ================= KEY SYSTEM =================
-local keyFrame = Instance.new("Frame", gui)
-keyFrame.Size = UDim2.new(0,300,0,170)
-keyFrame.Position = UDim2.new(0.5,-150,0.5,-85)
-keyFrame.BackgroundColor3 = Color3.fromRGB(25,25,25)
-Instance.new("UICorner", keyFrame).CornerRadius = UDim.new(0,12)
+-- Abas
+local MainTab   = Window:CreateTab("Main", 4483362458)
+local MoreTab   = Window:CreateTab("More", 4483362458)
+local VisualTab = Window:CreateTab("Visual", 4483362458)
 
-local keyTitle = Instance.new("TextLabel", keyFrame)
-keyTitle.Size = UDim2.new(1,0,0,40)
-keyTitle.Text = "RUAN MODSZ - KEY"
-keyTitle.BackgroundTransparency = 1
-keyTitle.TextColor3 = Color3.new(1,1,1)
-keyTitle.Font = Enum.Font.GothamBold
-keyTitle.TextSize = 16
-
-local keyBox = Instance.new("TextBox", keyFrame)
-keyBox.Size = UDim2.new(0.9,0,0,35)
-keyBox.Position = UDim2.new(0.05,0,0.4,0)
-keyBox.PlaceholderText = "Digite a key"
-keyBox.Text = ""
-keyBox.BackgroundColor3 = Color3.fromRGB(40,40,40)
-keyBox.TextColor3 = Color3.new(1,1,1)
-Instance.new("UICorner", keyBox).CornerRadius = UDim.new(0,8)
-
-local keyBtn = Instance.new("TextButton", keyFrame)
-keyBtn.Size = UDim2.new(0.9,0,0,35)
-keyBtn.Position = UDim2.new(0.05,0,0.7,0)
-keyBtn.Text = "CONFIRMAR"
-keyBtn.BackgroundColor3 = Color3.fromRGB(0,170,0)
-keyBtn.TextColor3 = Color3.new(1,1,1)
-Instance.new("UICorner", keyBtn).CornerRadius = UDim.new(0,8)
-
--- ================= BOTÃO FLUTUANTE =================
-local openBtn = Instance.new("TextButton", gui)
-openBtn.Size = UDim2.new(0,120,0,40)
-openBtn.Position = UDim2.new(0,20,0.5,0)
-openBtn.Text = "RUAN MODSZ"
-openBtn.Visible = false
-openBtn.BackgroundColor3 = Color3.fromRGB(0,170,0)
-openBtn.TextColor3 = Color3.new(1,1,1)
-Instance.new("UICorner", openBtn).CornerRadius = UDim.new(0,10)
-
--- ================= MENU =================
-local menu = Instance.new("Frame", gui)
-menu.Size = UDim2.new(0,380,0,320)
-menu.Position = UDim2.new(0.5,-190,0.5,-160)
-menu.BackgroundColor3 = Color3.fromRGB(30,30,30)
-menu.Visible = false
-Instance.new("UICorner", menu).CornerRadius = UDim.new(0,14)
-
-local title = Instance.new("TextLabel", menu)
-title.Size = UDim2.new(1,0,0,40)
-title.Text = "RUAN MODSZ"
-title.BackgroundTransparency = 1
-title.TextColor3 = Color3.new(1,1,1)
-title.Font = Enum.Font.GothamBold
-title.TextSize = 18
-
--- ================= FUNÇÃO TOGGLE =================
-local function criarToggle(texto, posY, callback)
-	local btn = Instance.new("TextButton", menu)
-	btn.Size = UDim2.new(0.9,0,0,35)
-	btn.Position = UDim2.new(0.05,0,0,posY)
-	btn.Text = texto.." [OFF]"
-	btn.BackgroundColor3 = Color3.fromRGB(45,45,45)
-	btn.TextColor3 = Color3.new(1,1,1)
-	Instance.new("UICorner", btn).CornerRadius = UDim.new(0,8)
-
-	local ativo = false
-	btn.MouseButton1Click:Connect(function()
-		ativo = not ativo
-		btn.Text = texto.." ["..(ativo and "ON" or "OFF").."]"
-		callback(ativo)
-	end)
+-- Função aviso
+local function aviso(msg)
+    Rayfield:Notify({
+        Title = "RUAN MODSZ",
+        Content = msg,
+        Duration = 3
+    })
 end
 
--- ================= MAIN =================
-criarToggle("Go to Celestial", 0.15, function(v) print("Celestial:",v) end)
-criarToggle("Go to Base", 0.27, function(v) print("Base:",v) end)
-criarToggle("God Mode (1-2 Wave)", 0.39, function(v) print("God:",v) end)
-criarToggle("Infinite Jump", 0.51, function(v) print("Jump:",v) end)
-criarToggle("Speed ++", 0.63, function(v) print("Speed:",v) end)
-criarToggle("Fly", 0.75, function(v) print("Fly:",v) end)
+-- =========================
+-- MAIN
+-- =========================
 
--- ================= MORE =================
-criarToggle("Collect Money", 0.15, function(v) print("Money:",v) end)
-criarToggle("Auto Grab 1 Click", 0.27, function(v) print("Grab:",v) end)
-criarToggle("Auto Rebirth", 0.39, function(v) print("Rebirth:",v) end)
-criarToggle("Anti-AFK", 0.51, function(v) print("AFK:",v) end)
-criarToggle("Dupe Brainrot (VISIBLE)", 0.63, function(v) print("Dupe:",v) end)
+MainTab:CreateButton({
+    Name = "Duplicar Brainrot",
+    Callback = function()
+        aviso("Duplicação de Brainrot executada")
+    end
+})
 
--- ================= CONTROLES =================
-openBtn.MouseButton1Click:Connect(function()
-	menu.Visible = not menu.Visible
-end)
+MainTab:CreateToggle({
+    Name = "Collect Money",
+    CurrentValue = false,
+    Callback = function(v)
+        aviso(v and "Collect Money ativado" or "Collect Money desativado")
+    end
+})
 
-keyBtn.MouseButton1Click:Connect(function()
-	if keyBox.Text == KEY_CORRETA then
-		keyFrame:Destroy()
-		openBtn.Visible = true
-	else
-		keyBox.Text = ""
-		keyBox.PlaceholderText = "KEY INCORRETA!"
-	end
-end)
+MainTab:CreateToggle({
+    Name = "Auto Grab 1 Click",
+    CurrentValue = false,
+    Callback = function(v)
+        aviso(v and "Auto Grab ativado" or "Auto Grab desativado")
+    end
+})
+
+MainTab:CreateToggle({
+    Name = "Auto Rebirth",
+    CurrentValue = false,
+    Callback = function(v)
+        aviso(v and "Auto Rebirth ativado" or "Auto Rebirth desativado")
+    end
+})
+
+MainTab:CreateToggle({
+    Name = "Anti-AFK",
+    CurrentValue = false,
+    Callback = function(v)
+        aviso(v and "Anti-AFK ativado" or "Anti-AFK desativado")
+    end
+})
+
+MainTab:CreateButton({
+    Name = "Sell This Brainrot",
+    Callback = function()
+        aviso("Brainrot vendido")
+    end
+})
+
+MainTab:CreateButton({
+    Name = "Sell All Brainrot",
+    Callback = function()
+        aviso("Todos os Brainrots vendidos")
+    end
+})
+
+-- =========================
+-- MORE
+-- =========================
+
+MoreTab:CreateButton({
+    Name = "Go To Celestial",
+    Callback = function()
+        aviso("Teleport para Celestial")
+    end
+})
+
+MoreTab:CreateButton({
+    Name = "Go To Base",
+    Callback = function()
+        aviso("Teleport para Base")
+    end
+})
+
+MoreTab:CreateToggle({
+    Name = "God Mode",
+    CurrentValue = false,
+    Callback = function(v)
+        aviso(v and "God Mode ativado" or "God Mode desativado")
+    end
+})
+
+MoreTab:CreateToggle({
+    Name = "Infinite Jump",
+    CurrentValue = false,
+    Callback = function(v)
+        aviso(v and "Infinite Jump ativado" or "Infinite Jump desativado")
+    end
+})
+
+MoreTab:CreateToggle({
+    Name = "Speed++",
+    CurrentValue = false,
+    Callback = function(v)
+        aviso(v and "Speed aumentado" or "Speed normal")
+    end
+})
+
+MoreTab:CreateToggle({
+    Name = "Fly",
+    CurrentValue = false,
+    Callback = function(v)
+        aviso(v and "Fly ativado" or "Fly desativado")
+    end
+})
+
+-- =========================
+-- VISUAL
+-- =========================
+
+VisualTab:CreateToggle({
+    Name = "ESP Bone",
+    CurrentValue = false,
+    Callback = function(v)
+        aviso(v and "ESP Bone ativado" or "ESP Bone desativado")
+    end
+})
+
+VisualTab:CreateToggle({
+    Name = "ESP Line",
+    CurrentValue = false,
+    Callback = function(v)
+        aviso(v and "ESP Line ativado" or "ESP Line desativado")
+    end
+})
+
+VisualTab:CreateToggle({
+    Name = "ESP Base",
+    CurrentValue = false,
+    Callback = function(v)
+        aviso(v and "ESP Base ativado" or "ESP Base desativado")
+    end
+})
+
+VisualTab:CreateToggle({
+    Name = "ESP Brainrot Chams",
+    CurrentValue = false,
+    Callback = function(v)
+        aviso(v and "Chams Brainrot ativado" or "Chams Brainrot desativado")
+    end
+})
+
+-- FINAL
+Rayfield:Notify({
+    Title = "RUAN MODSZ",
+    Content = "Key aceita. Bem-vindo!",
+    Duration = 4
+})
